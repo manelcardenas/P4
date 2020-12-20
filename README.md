@@ -76,7 +76,7 @@ ejercicios indicados.
   
   + **Indique todas las órdenes necesarias para obtener las gráficas a partir de las señales parametrizadas.**
   
-    Para obtener las gráficas siguientes hemos introducido los siguientes comandos detallados a continuación (tal y como se nos recomienda en el enunciado), para       obtener un .txt con las dos columnas que nos interesan. Seguidamente, hemos usado la librería `matplotlib` de python para representarlos. El locutor               seleccionado ha sido **BLOCK01/SES017**. 
+    Para obtener las gráficas siguientes hemos introducido los siguientes comandos detallados a continuación (tal y como se nos recomienda en el enunciado), para       obtener un .txt con las dos columnas que nos interesan. Seguidamente, hemos usado la librería `matplotlib` de python para representarlos. El código de python está adjunto en las carpetas. El locutor               seleccionado ha sido **BLOCK01/SES017**. 
 
     #### LP
 
