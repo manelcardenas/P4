@@ -160,7 +160,7 @@ A partir de la cual, vamos a explicar los comandos implicados:
 
   El hecho de que podamos ver la diferencia entre ambos, indica que el modelo GMM se ajusta bien a las características del locutor, siendo así una buena forma de reconocer y verificar el locutor.
 
-  <img src="figuras/collage_graficas.jpg" width="400" align="center">
+  <img src="figuras/collage_graficas.jpg" width="600" align="center">
 
   Comandos:
 
