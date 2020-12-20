@@ -38,11 +38,11 @@ ejercicios indicados.
  ```
  A partir de la cual, vamos a explicar los comandos implicados:
 
-  - `sox`: Cambiar de formato una señal de entrada $inputfile, a raw (sin cabeceras) codificado como signed y de 16 bits..
-  - `$X2X`: Convertir los datos a distintos formatos. +sf significa short format. 
-  - `$FRAME`: Convertir una secuencia de datos de entrada en un conjunto de frames, con un periodo 80 y una longitud 240 muestras, indicadas como vemos opr -l y -p.
-  - `$WINDOW`: Enventanar una secuencia de datos. Se usa la ventana de Blackman por defecto, la cual se multiplica por la secuencia de datos de entrada de longitud  240 y de salida tambien de longitud 240. 
-  - `$LPC`: Calcula los coeficientes LPC (predicción lineal), de longitud del frame tenemos 240 y el orden de la lpc lo indicamos como $lpc_order: En `run_spkid` definimos el valor de este, el cual lo pasamos a `wav2lp.sh` de esta forma  `$lpc_order=$1`. 
+  + `sox`: Cambiar de formato una señal de entrada $inputfile, a raw (sin cabeceras) codificado como signed y de 16 bits..
+  + `$X2X`: Convertir los datos a distintos formatos. +sf significa short format. 
+  + `$FRAME`: Convertir una secuencia de datos de entrada en un conjunto de frames, con un periodo 80 y una longitud 240 muestras, indicadas como vemos opr -l y -p.
+  + `$WINDOW`: Enventanar una secuencia de datos. Se usa la ventana de Blackman por defecto, la cual se multiplica por la secuencia de datos de entrada de longitud  240 y de salida tambien de longitud 240. 
+  + `$LPC`: Calcula los coeficientes LPC (predicción lineal), de longitud del frame tenemos 240 y el orden de la lpc lo indicamos como $lpc_order: En `run_spkid` definimos el valor de este, el cual lo pasamos a `wav2lp.sh` de esta forma  `$lpc_order=$1`. 
 
 - **Explique el procedimiento seguido para obtener un fichero de formato *fmatrix* a partir de los ficheros de salida de SPTK (líneas 45 a 47 del script `wav2lp.sh`).**
 
