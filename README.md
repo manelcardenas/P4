@@ -74,7 +74,7 @@ Para obtener las gráficas siguientes hemos introducido los siguientes comandos 
 fmatrix_show work/lp/BLOCK01/SES017/*.lp | egrep '^\[' | cut -f3,4 > lp_2_3.txt
 ```
 
-<img src="figuras/lp.png" width="800" align="center">
+<img src="figuras/lp.png" width="600" align="center">
 
 
 #### LPCC
@@ -83,7 +83,7 @@ fmatrix_show work/lp/BLOCK01/SES017/*.lp | egrep '^\[' | cut -f3,4 > lp_2_3.txt
 fmatrix_show work/lpcc/BLOCK01/SES017/*.lpcc | egrep '^\[' | cut -f3,4 > lpcc_2_3.txt
 ```
 
-<img src="figuras/lpcc.png" width="800" align="center">
+<img src="figuras/lpcc.png" width="600" align="center">
 
 
 #### MFCC
@@ -92,10 +92,25 @@ fmatrix_show work/lpcc/BLOCK01/SES017/*.lpcc | egrep '^\[' | cut -f3,4 > lpcc_2_
 fmatrix_show work/mfcc/BLOCK01/SES017/*.mfcc | egrep '^\[' | cut -f3,4 > mfcc_2_3.txt
 ```
 
-<img src="figuras/mfcc.png" width="800" align="center">
+<img src="figuras/mfcc.png" width="600" align="center">
 
 
   + **¿Cuál de ellas le parece que contiene más información?
+
+En general, mirando las gráficas, vemos que no podemos extraer mucha información.  Aun así, observamos una correlación muy alta entre los dos coeficientes:
+
+   (a) Si su función en el plano es una línea, aunque no lineal, monótonamente creciente o decreciente, sabiendo el valor de un coeficiente podemos saber cuánto vale el siguiente. Por lo tanto el segundo coeficiente no aporta ninguna información al primero. 
+
+   (b) Si la función es una “nube”, saber el valor de un coeficiente no aporta demasiada información acerca de cuánto vale el siguiente → por eso los dos coeficientes aportan información útil.
+
+Hecho este apunte teórico, podemos observar cómo LP sigue más una distribución (a) y MFCC y LPCC son (b), siendo MFCC más “nube” que LPCC. Por eso, en términos de quién aporta más información:
+
+**```
+                                                                  LP < LPCC < MFCC
+
+```**
+
+
 
 - ****Usando el programa <code>pearson</code>, obtenga los coeficientes de correlación normalizada entre los parámetros 2 y 3 para un locutor, y rellene la tabla siguiente con los valores obtenidos.**
 
