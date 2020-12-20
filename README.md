@@ -105,7 +105,9 @@ A partir de la cual, vamos a explicar los comandos implicados:
   Mediante los siguientes comandos, obtenemos los ficheros .txt con la información de correlaciones normalizadas.
 
   `pearson work/lp/BLOCK01/SES017/*.lp > lp_pearson.txt`
+  
   `pearson work/lpcc/BLOCK01/SES017/*.lpcc > lpcc_pearson.txt`
+  
   `pearson work/mfcc/BLOCK01/SES017/*.mfcc > mfcc_pearson.txt`
 
   |                        | LP   | LPCC | MFCC |
