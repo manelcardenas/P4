@@ -97,9 +97,7 @@ A partir de la cual, vamos a explicar los comandos implicados:
 
     1. Si la función es una “nube”, saber el valor de un coeficiente no aporta demasiada información acerca de cuánto vale el siguiente → por eso los dos coeficientes aportan información útil.
 
-    Hecho este apunte teórico, podemos observar cómo LP sigue más una distribución (a) y MFCC y LPCC son (b), siendo MFCC más “nube” que LPCC. Por eso, en términos de quién aporta más información:
-
-    **LP < LPCC < MFCC**
+    Hecho este apunte teórico, podemos observar cómo LP sigue más una distribución (a) y MFCC y LPCC son (b), siendo MFCC más “nube” que LPCC. Por eso, en términos de quién aporta más información: **LP < LPCC < MFCC**
 
 
 - **Usando el programa <code>pearson</code>, obtenga los coeficientes de correlación normalizada entre los parámetros 2 y 3 para un locutor, y rellene la tabla siguiente con los valores obtenidos.**
@@ -170,8 +168,6 @@ A partir de la cual, vamos a explicar los comandos implicados:
   `plot_gmm_feat work/gmm/mfcc/SES016.gmm work/mfcc/BLOCK01/SES016/.mfcc -f blue -g blue`
   `plot_gmm_feat work/gmm/mfcc/SES017.gmm work/mfcc/BLOCK01/SES017/.mfcc -f blue -g red` 
   `plot_gmm_feat work/gmm/mfcc/SES016.gmm work/mfcc/BLOCK01/SES016/.mfcc -f red -g blue` 
-
-
 
 
 ### Reconocimiento del locutor.
