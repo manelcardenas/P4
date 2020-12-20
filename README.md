@@ -50,15 +50,15 @@ A partir de la cual, vamos a explicar los comandos implicados:
 
 - **Escriba el *pipeline* principal usado para calcular los coeficientes cepstrales de predicción lineal LPCC) en su fichero** <code>scripts/wav2lpcc.sh</code>:
 
-```bash
-sox $inputfile -t raw -e signed -b 16 - | $X2X +sf | $FRAME -l 240 -p 80 | $WINDOW -l 240 -L 240 | $LPC -l 240 -m $lpc_order | $LPCC2C -m  $lpc_order -M $cepstrum_order > $base.lpcc
-```
+  ```bash
+  sox $inputfile -t raw -e signed -b 16 - | $X2X +sf | $FRAME -l 240 -p 80 | $WINDOW -l 240 -L 240 | $LPC -l 240 -m $lpc_order | $LPCC2C -m  $lpc_order -M $cepstrum_order > $base.lpcc
+  ```
 
 - **Escriba el *pipeline* principal usado para calcular los coeficientes cepstrales en escala Mel (MFCC) en su fichero <code>scripts/wav2mfcc.sh</code>:**
 
-```bash
-sox $inputfile -t raw -e signed -b 16 - | $X2X +sf | $FRAME -l 240 -p 80 | $WINDOW -l 240 -L 240 | $MFCC -l 240 -m $mfcc_order > $base.mfcc
-```
+  ```bash
+  sox $inputfile -t raw -e signed -b 16 - | $X2X +sf | $FRAME -l 240 -p 80 | $WINDOW -l 240 -L 240 | $MFCC -l 240 -m $mfcc_order > $base.mfcc
+  ```
 
 ### Extracción de características.
 
@@ -68,47 +68,47 @@ sox $inputfile -t raw -e signed -b 16 - | $X2X +sf | $FRAME -l 240 -p 80 | $WIND
   
     Para obtener las gráficas siguientes hemos introducido los siguientes comandos detallados a continuación (tal y como se nos recomienda en el enunciado), para       obtener un .txt con las dos columnas que nos interesan. Seguidamente, hemos usado la librería `matplotlib` de python para representarlos. El locutor               seleccionado ha sido **BLOCK01/SES017**. 
 
-#### LP
+    #### LP
 
-`fmatrix_show work/lp/BLOCK01/SES017/*.lp | egrep '^\[' | cut -f3,4 > lp_2_3.txt`
+    `fmatrix_show work/lp/BLOCK01/SES017/*.lp | egrep '^\[' | cut -f3,4 > lp_2_3.txt`
 
-<img src="figuras/lp.png" width="400" align="center">
-
-
-#### LPCC
-
-`fmatrix_show work/lpcc/BLOCK01/SES017/*.lpcc | egrep '^\[' | cut -f3,4 > lpcc_2_3.txt`
-
-<img src="figuras/lpcc.png" width="400" align="center">
+    <img src="figuras/lp.png" width="400" align="center">
 
 
-#### MFCC
+    #### LPCC
 
-`fmatrix_show work/mfcc/BLOCK01/SES017/*.mfcc | egrep '^\[' | cut -f3,4 > mfcc_2_3.txt`
+    `fmatrix_show work/lpcc/BLOCK01/SES017/*.lpcc | egrep '^\[' | cut -f3,4 > lpcc_2_3.txt`
 
-<img src="figuras/mfcc.png" width="400" align="center">
+    <img src="figuras/lpcc.png" width="400" align="center">
+
+
+    #### MFCC
+
+    `fmatrix_show work/mfcc/BLOCK01/SES017/*.mfcc | egrep '^\[' | cut -f3,4 > mfcc_2_3.txt`
+
+    <img src="figuras/mfcc.png" width="400" align="center">
 
 
   + **¿Cuál de ellas le parece que contiene más información?**
 
-En general, mirando las gráficas, vemos que no podemos extraer mucha información.  Aun así, observamos una correlación muy alta entre los dos coeficientes:
+    En general, mirando las gráficas, vemos que no podemos extraer mucha información.  Aun así, observamos una correlación muy alta entre los dos coeficientes:
 
-1. Si su función en el plano es una línea, aunque no lineal, monótonamente creciente o decreciente, sabiendo el valor de un coeficiente podemos saber cuánto vale el siguiente. Por lo tanto el segundo coeficiente no aporta ninguna información al primero. 
+    1. Si su función en el plano es una línea, aunque no lineal, monótonamente creciente o decreciente, sabiendo el valor de un coeficiente podemos saber cuánto vale el siguiente. Por lo tanto el segundo coeficiente no aporta ninguna información al primero. 
 
-1. Si la función es una “nube”, saber el valor de un coeficiente no aporta demasiada información acerca de cuánto vale el siguiente → por eso los dos coeficientes aportan información útil.
+    1. Si la función es una “nube”, saber el valor de un coeficiente no aporta demasiada información acerca de cuánto vale el siguiente → por eso los dos coeficientes aportan información útil.
 
-Hecho este apunte teórico, podemos observar cómo LP sigue más una distribución (a) y MFCC y LPCC son (b), siendo MFCC más “nube” que LPCC. Por eso, en términos de quién aporta más información:
+    Hecho este apunte teórico, podemos observar cómo LP sigue más una distribución (a) y MFCC y LPCC son (b), siendo MFCC más “nube” que LPCC. Por eso, en términos de quién aporta más información:
 
-**LP < LPCC < MFCC**
+    **LP < LPCC < MFCC**
 
 
-- ****Usando el programa <code>pearson</code>, obtenga los coeficientes de correlación normalizada entre los parámetros 2 y 3 para un locutor, y rellene la tabla siguiente con los valores obtenidos.**
+- **Usando el programa <code>pearson</code>, obtenga los coeficientes de correlación normalizada entre los parámetros 2 y 3 para un locutor, y rellene la tabla siguiente con los valores obtenidos.**
 
-Mediante los siguientes comandos, obtenemos los ficheros .txt con la información de correlaciones normalizadas.
+  Mediante los siguientes comandos, obtenemos los ficheros .txt con la información de correlaciones normalizadas.
 
-`pearson work/lp/BLOCK01/SES017/*.lp > lp_pearson.txt`
-`pearson work/lpcc/BLOCK01/SES017/*.lpcc > lpcc_pearson.txt`
-`pearson work/mfcc/BLOCK01/SES017/*.mfcc > mfcc_pearson.txt`
+  `pearson work/lp/BLOCK01/SES017/*.lp > lp_pearson.txt`
+  `pearson work/lpcc/BLOCK01/SES017/*.lpcc > lpcc_pearson.txt`
+  `pearson work/mfcc/BLOCK01/SES017/*.mfcc > mfcc_pearson.txt`
 
   |                        | LP   | LPCC | MFCC |
   |------------------------|:----:|:----:|:----:|
@@ -116,29 +116,29 @@ Mediante los siguientes comandos, obtenemos los ficheros .txt con la informació
   
   + **Compare los resultados de <code>pearson</code> con los obtenidos gráficamente.**
   
-Los valores de una correlación normalizada se encuentran en este intervalo [-1,1]. Por tanto, |ρx| tiene valores entre 0 y 1. 
+    Los valores de una correlación normalizada se encuentran en este intervalo [-1,1]. Por tanto, |ρx| tiene valores entre 0 y 1. 
 
-  |                        | LP   | LPCC | MFCC |
-  |------------------------|:----:|:----:|:----:|
-  | &rho;<sub>x</sub>[2,3] |-0.872|0.1484|-0.205|
+    |                        | LP   | LPCC | MFCC |
+    |------------------------|:----:|:----:|:----:|
+    | &rho;<sub>x</sub>[2,3] |-0.872|0.1484|-0.205|
   
 
-Cuanto más cercano a uno sea el valor, más correlación hay. Cuanto más cercano a 0 sea, menos correlación habrá entre los coeficientes. 
+    Cuanto más cercano a uno sea el valor, más correlación hay. Cuanto más cercano a 0 sea, menos correlación habrá entre los coeficientes. 
 
-Pearson determina si existe correlación entre los coeficientes y fuerza que sea lineal. Por lo tanto, LP es normal que tenga una correlación cercana a 1, ya que como hemos visto en las gráficas, los valores eran muy correlados. En cambio, con LPCC y MFCC nos damos cuenta de que los valores son mucho más cercanos a 0 que a 1, comprobando así la incorrelación entre sus valores, y la relación con la forma de “nube” de las gráficas anteriores. 
+    Pearson determina si existe correlación entre los coeficientes y fuerza que sea lineal. Por lo tanto, LP es normal que tenga una correlación cercana a 1, ya que como hemos visto en las gráficas, los valores eran muy correlados. En cambio, con LPCC y MFCC nos damos cuenta de que los valores son mucho más cercanos a 0 que a 1, comprobando así la incorrelación entre sus valores, y la relación con la forma de “nube” de las gráficas anteriores. 
 
-Aún así, LPCC tendría que ser un valor mayor a MFCC… hemos probado con otro locutor, concretamente BLOCK00/SES001, y el resultado es el siguiente, el cual si que cuadra con la teoría:
+    Aún así, LPCC tendría que ser un valor mayor a MFCC… hemos probado con otro locutor, concretamente BLOCK00/SES001, y el resultado es el siguiente, el cual si que cuadra con la teoría:
 
-  |                        | LP   | LPCC | MFCC |
-  |------------------------|:----:|:----:|:----:|
-  | &rho;<sub>x</sub>[2,3] |0.8059|0.3619|0.0400|
+    |                        | LP   | LPCC | MFCC |
+    |------------------------|:----:|:----:|:----:|
+    | &rho;<sub>x</sub>[2,3] |0.8059|0.3619|0.0400|
   
-Como vemos, en este caso se cumple lo que hemos explicado anteriormente. 
+      Como vemos, en este caso se cumple lo que hemos explicado anteriormente. 
 
 - **Según la teoría, ¿qué parámetros considera adecuados para el cálculo de los coeficientes LPCC y MFCC?**
 
-1. Para lpcc se suele utilizar una predicción de orden de 8 a 12 aproximadamente y un número más elevado de coeficientes cepstrales. En nuestro caso, para simplificar hemos cogido una predicción de orden 8, igual que la de lp, y 20 coeficientes cepstrales
-1. Para mfcc el valor habitual para empezar es de 13 coeficientes y el banco de filtros entre 20 y 40. En nuestro caso utilizamos 13 coeficientes y para simplificar usamos un banco de filtros de 20 coeficientes, el mismo valor que en el lpcc.
+  1. Para lpcc se suele utilizar una predicción de orden de 8 a 12 aproximadamente y un número más elevado de coeficientes cepstrales. En nuestro caso, para simplificar hemos cogido una predicción de orden 8, igual que la de lp, y 20 coeficientes cepstrales
+  1. Para mfcc el valor habitual para empezar es de 13 coeficientes y el banco de filtros entre 20 y 40. En nuestro caso utilizamos 13 coeficientes y para simplificar usamos un banco de filtros de 20 coeficientes, el mismo valor que en el lpcc.
 
 ### Entrenamiento y visualización de los GMM.
 
@@ -146,30 +146,30 @@ Como vemos, en este caso se cumple lo que hemos explicado anteriormente.
 
 - **Inserte una gráfica que muestre la función de densidad de probabilidad modelada por el GMM de un locutor para sus dos primeros coeficientes de MFCC.**
   
-Como más gaussianas hay, más se amolda a la población. En estas dos imágenes, aunque no se muestra la población, se comprueba lo dicho:
+  Como más gaussianas hay, más se amolda a la población. En estas dos imágenes, aunque no se muestra la población, se comprueba lo dicho:
 
-Cinco gausianas:
+  Cinco gausianas:
 
-<img src="figuras/cinco.jpeg" width="400" align="center">
+  <img src="figuras/cinco.jpeg" width="400" align="center">
 
-Muchas gausianas:
+  Muchas gausianas:
 
-<img src="figuras/muchas.jpeg" width="400" align="center">
+  <img src="figuras/muchas.jpeg" width="400" align="center">
 
 - **Inserte una gráfica que permita comparar los modelos y poblaciones de dos locutores distintos (la gŕafica de la página 20 del enunciado puede servirle de referencia del resultado deseado). Analice la capacidad del modelado GMM para diferenciar las señales de uno y otro.**
 
-En las 4 imagenes podemos observar la población (puntos) y a su vez, la gráfica de función de densidad de los locutores BLOCK01/SES017 y BLOCK01/SES016. Como vemos, en las dos gráficas que la curba de densidad y la población son del mismo color (representan al mismo locutor), la curba se amolda a la población claramente. En cambio, cuando son de colores distintos, es decir, representan la función de densidad de un locutor con la población de otro, se nota como no cuadra… ya que donde es mas densa la población, no está marcado bien con la función de densidad. 
+  En las 4 imagenes podemos observar la población (puntos) y a su vez, la gráfica de función de densidad de los locutores BLOCK01/SES017 y BLOCK01/SES016. Como vemos, en las dos gráficas que la curba de densidad y la población son del mismo color (representan al mismo locutor), la curba se amolda a la población claramente. En cambio, cuando son de colores distintos, es decir, representan la función de densidad de un locutor con la población de otro, se nota como no cuadra… ya que donde es mas densa la población, no está marcado bien con la función de densidad. 
 
-El hecho de que podamos ver la diferencia entre ambos, indica que el modelo GMM se ajusta bien a las características del locutor, siendo así una buena forma de reconocer y verificar el locutor.
+  El hecho de que podamos ver la diferencia entre ambos, indica que el modelo GMM se ajusta bien a las características del locutor, siendo así una buena forma de reconocer y verificar el locutor.
 
-<img src="figuras/collage_graficas.jpg" width="400" align="center">
+  <img src="figuras/collage_graficas.jpg" width="400" align="center">
 
-Comandos:
+  Comandos:
 
-`plot_gmm_feat work/gmm/mfcc/SES017.gmm work/mfcc/BLOCK01/SES017/.mfcc -f red -g red`
-`plot_gmm_feat work/gmm/mfcc/SES016.gmm work/mfcc/BLOCK01/SES016/.mfcc -f blue -g blue`
-`plot_gmm_feat work/gmm/mfcc/SES017.gmm work/mfcc/BLOCK01/SES017/.mfcc -f blue -g red` 
-`plot_gmm_feat work/gmm/mfcc/SES016.gmm work/mfcc/BLOCK01/SES016/.mfcc -f red -g blue` 
+  `plot_gmm_feat work/gmm/mfcc/SES017.gmm work/mfcc/BLOCK01/SES017/.mfcc -f red -g red`
+  `plot_gmm_feat work/gmm/mfcc/SES016.gmm work/mfcc/BLOCK01/SES016/.mfcc -f blue -g blue`
+  `plot_gmm_feat work/gmm/mfcc/SES017.gmm work/mfcc/BLOCK01/SES017/.mfcc -f blue -g red` 
+  `plot_gmm_feat work/gmm/mfcc/SES016.gmm work/mfcc/BLOCK01/SES016/.mfcc -f red -g blue` 
 
 
 
