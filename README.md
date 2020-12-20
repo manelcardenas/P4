@@ -46,11 +46,11 @@ A partir de la cual, vamos a explicar los comandos implicados:
 
 - **Explique el procedimiento seguido para obtener un fichero de formato *fmatrix* a partir de los ficheros de salida de SPTK (líneas 45 a 47 del script `wav2lp.sh`).**
 
-**Número de columnas**. Fijamos el numero de columnas, el cual se extrae del número de orden del LPC. Debido a que en la primera columna se encuentra la ganancia, entonces el numero de columnas será LPC_order + 1. 
+  **Número de columnas**. Fijamos el numero de columnas, el cual se extrae del número de orden del LPC. Debido a que en la primera columna se encuentra la ganancia, entonces el numero de columnas será LPC_order + 1. 
 
 `ncol=$((lpc_order+1))`
 
-**Numero de filas**. Seguidamente, extraemos el numero de filas del fichero base.lp. Convertimos el fichero a ascii (`$X2X +fa`) y contamos el número de lineas que hay (`wc -l`) con el word counter.
+  **Numero de filas**. Seguidamente, extraemos el numero de filas del fichero base.lp. Convertimos el fichero a ascii (`$X2X +fa`) y contamos el número de lineas que hay (`wc -l`) con el word counter.
   
 `nrow=$($X2X +fa < $base.lp | wc -l | perl -ne 'print $_/'$ncol', "\n";')`
  
