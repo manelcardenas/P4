@@ -165,8 +165,11 @@ A partir de la cual, vamos a explicar los comandos implicados:
   Comandos:
 
   `plot_gmm_feat work/gmm/mfcc/SES017.gmm work/mfcc/BLOCK01/SES017/.mfcc -f red -g red`
+  
   `plot_gmm_feat work/gmm/mfcc/SES016.gmm work/mfcc/BLOCK01/SES016/.mfcc -f blue -g blue`
+  
   `plot_gmm_feat work/gmm/mfcc/SES017.gmm work/mfcc/BLOCK01/SES017/.mfcc -f blue -g red` 
+  
   `plot_gmm_feat work/gmm/mfcc/SES016.gmm work/mfcc/BLOCK01/SES016/.mfcc -f red -g blue` 
 
 
