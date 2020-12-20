@@ -130,7 +130,7 @@ ejercicios indicados.
 
     |                        | LP   | LPCC | MFCC |
     |------------------------|:----:|:----:|:----:|
-    | &rho;<sub>x</sub>[2,3] |-0.872|0.1484|-0.205|
+    | modulo(&rho;<sub>x</sub>[2,3]) |-0.872|0.1484|-0.205|
   
 
     Cuanto más cercano a uno sea el valor, más correlación hay. Cuanto más cercano a 0 sea, menos correlación habrá entre los coeficientes. 
