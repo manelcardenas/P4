@@ -146,11 +146,11 @@ A partir de la cual, vamos a explicar los comandos implicados:
   
   Como más gaussianas hay, más se amolda a la población. En estas dos imágenes, aunque no se muestra la población, se comprueba lo dicho:
 
-  Cinco gausianas:
+  **Cinco gausianas:**
 
   <img src="figuras/cinco.jpeg" width="400" align="center">
 
-  Muchas gausianas:
+  **Muchas gausianas:**
 
   <img src="figuras/muchas.jpeg" width="400" align="center">
 
