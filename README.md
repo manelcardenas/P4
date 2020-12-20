@@ -191,12 +191,36 @@ ejercicios indicados.
 
 - **Inserte una tabla con la tasa de error obtenida en el reconocimiento de los locutores de la base de datos SPEECON usando su mejor sistema de reconocimiento para los parámetros LP, LPCC y MFCC.**
 
+#### LP
+
+  <img src="figuras/lp_rec.png" width="500" align="center">
+
+#### LPCC
+
+  <img src="figuras/lpcc_rec.png" width="500" align="center">
+
+#### MFCC
+
+  <img src="figuras/mfcc_rec.png" width="500" align="center">
+
 ### Verificación del locutor.
 
 **Complete el código necesario para realizar verificación del locutor y optimice sus parámetros.**
 
 - **Inserte una tabla con el *score* obtenido con su mejor sistema de verificación del locutor en la tarea de verificación de SPEECON. La tabla debe incluir el umbral óptimo, el número de falsas alarmas y de pérdidas, y el score obtenido usando la parametrización que mejor resultado le hubiera dado en la tarea de reconocimiento.**
  
+ #### LP
+ 
+   <img src="figuras/ver_loc_lp.png" width="500" align="center">
+
+ #### LPCC
+
+   <img src="figuras/ver_loc_lpcc.png" width="500" align="center">
+
+ #### MFCC
+ 
+   <img src="figuras/ver_loc_mfcc.png" width="500" align="center">
+
 ### Test final
 
 - **Adjunte, en el repositorio de la práctica, los ficheros `class_test.log` y `verif_test.log` correspondientes a la evaluación *ciega* final.**
