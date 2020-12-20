@@ -221,7 +221,7 @@ ejercicios indicados.
 
   |**CostDetection**| 20.8 | 
   |------------------------|:----:|
-  | Umbral óptimo|0.673979817092502|
+  |THR|0.673979817092502|
   | Missed |52 / 250 = 0.2080|
   | False Alarm |0 / 1000 = 0.0000|
  
