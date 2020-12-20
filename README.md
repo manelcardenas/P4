@@ -55,6 +55,7 @@ A partir de la cual, vamos a explicar los comandos implicados:
   `nrow=$($X2X +fa < $base.lp | wc -l | perl -ne 'print $_/'$ncol', "\n";')`
  
   * **¿Por qué es conveniente usar este formato (u otro parecido)? Tenga en cuenta cuál es el formato de entrada y cuál es el de resultado.**
+    
     Las matrices nos proporcionan una forma fácil y rápida de acceso y manipulación de todos los datos almacenados en el sistema. 
 
 - **Escriba el *pipeline* principal usado para calcular los coeficientes cepstrales de predicción lineal LPCC) en su fichero** <code>scripts/wav2lpcc.sh</code>:
