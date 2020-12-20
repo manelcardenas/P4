@@ -148,11 +148,11 @@ A partir de la cual, vamos a explicar los comandos implicados:
 
   **Cinco gausianas:**
 
-  <img src="figuras/cinco.jpeg" width="400" align="center">
+  <img src="figuras/cinco.jpeg" width="500" align="center">
 
   **Muchas gausianas:**
 
-  <img src="figuras/muchas.jpeg" width="400" align="center">
+  <img src="figuras/muchas.jpeg" width="500" align="center">
 
 - **Inserte una gráfica que permita comparar los modelos y poblaciones de dos locutores distintos (la gŕafica de la página 20 del enunciado puede servirle de referencia del resultado deseado). Analice la capacidad del modelado GMM para diferenciar las señales de uno y otro.**
 
@@ -160,7 +160,7 @@ A partir de la cual, vamos a explicar los comandos implicados:
 
   El hecho de que podamos ver la diferencia entre ambos, indica que el modelo GMM se ajusta bien a las características del locutor, siendo así una buena forma de reconocer y verificar el locutor.
 
-  <img src="figuras/collage_graficas.jpg" width="600" align="center">
+  <img src="figuras/collage_graficas.jpg" width="800" align="center">
 
   Comandos:
 
