@@ -191,6 +191,14 @@ ejercicios indicados.
 
 - **Inserte una tabla con la tasa de error obtenida en el reconocimiento de los locutores de la base de datos SPEECON usando su mejor sistema de reconocimiento para los parámetros LP, LPCC y MFCC.**
 
+
+  |                        | LP   | LPCC | MFCC |
+  |------------------------|:----:|:----:|:----:|
+  | Cost detection |91.2%|77.9%|20.8%|
+
+
+   Adjuntamos a continuación pantallazos:
+   
 ##### LP
 
   <img src="figuras/lp_rec.png" width="500" align="center">
@@ -208,7 +216,18 @@ ejercicios indicados.
 **Complete el código necesario para realizar verificación del locutor y optimice sus parámetros.**
 
 - **Inserte una tabla con el *score* obtenido con su mejor sistema de verificación del locutor en la tarea de verificación de SPEECON. La tabla debe incluir el umbral óptimo, el número de falsas alarmas y de pérdidas, y el score obtenido usando la parametrización que mejor resultado le hubiera dado en la tarea de reconocimiento.**
+
+   Nuestro mejor sistema ha sido con MFCC, a continuación está la tabla con los datos que se nos pide:
+
+  |**CostDetection**| 20.8 | 
+  |------------------------|:----:|
+  | Umbral óptimo|0.673979817092502|
+  | Missed |52 / 250 = 0.2080|
+  | False Alarm |0 / 1000 = 0.0000|
  
+ 
+  Adjuntamos a continuación pantallazos de todos los sistemas:
+  
  ##### LP
  
    <img src="figuras/ver_loc_lp.png" width="500" align="center">
