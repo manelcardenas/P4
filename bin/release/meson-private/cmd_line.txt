@@ -1,0 +1,7 @@
+[options]
+prefix = /Users/marta/PAV
+libdir = lib
+buildtype = release
+
+[properties]
+
