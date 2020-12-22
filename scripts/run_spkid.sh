@@ -151,8 +151,7 @@ for cmd in $*; do
        for dir in $db/BLOCK*/SES* ; do
            name=${dir/*\/}
            echo $name ----
-           #gmm_train  -v 1 -T 0.0005 -N40 -m 20 -d $w/$FEAT -e $FEAT -g $w/gmm/$FEAT/$name.gmm $lists/class/$name.train || exit 1
-           gmm_train -i 1 -n 50000 -t 0.000001 -v 1 -T 0.0005 -N100 -m 40 -d $w/$FEAT -e $FEAT -g $w/gmm/$FEAT/$name.gmm $lists/class/$name.train || exit 1
+           gmm_train -i 1 -n 50 -t 0.000001 -v 1 -T 0.0005 -N100 -m 40 -d $w/$FEAT -e $FEAT -g $w/gmm/$FEAT/$name.gmm $lists/class/$name.train || exit 1
            echo
        done
    elif [[ $cmd == test ]]; then
@@ -177,7 +176,7 @@ for cmd in $*; do
 	   # - The name of the world model will be used by gmm_verify in the 'verify' command below.
        #echo "Implement the trainworld option ..."
        #gmm_train  -v 1 -T 0.0005 -N40 -m 100 -d $w/$FEAT -e $FEAT -g $w/gmm/$FEAT/$world.gmm $lists/verif/$world.train || exit 1
-       gmm_train -i 1 -n 50000 -t 0.0000001 -v 1 -T 0.0005 -N50 -m 40 -d $w/$FEAT -e $FEAT -g $w/gmm/$FEAT/$world.gmm $lists/verif/$world.train || exit 1
+       gmm_train -i 1 -n 50 -t 0.0000001 -v 1 -T 0.0005 -N50 -m 40 -d $w/$FEAT -e $FEAT -g $w/gmm/$FEAT/$world.gmm $lists/verif/$world.train || exit 1
 
 
    elif [[ $cmd == verify ]]; then
@@ -220,7 +219,7 @@ for cmd in $*; do
         (gmm_verify -d $w/$FEAT -e $FEAT -D $w/gmm/$FEAT -E gmm -w $world $lists/gmm.list  $lists/final/verif.test $lists/final/verif.test.candidates | tee $w/verification.log) || exit 1
 
     perl -ane 'print "$F[0]\t$F[1]\t";
-    if ($F[2] >  0.685469949922804) {print "1\n"}
+    if ($F[2] >   0.673979817092502) {print "1\n"}
     else {print "0\n"}' $w/verification.log > verif_test.log
    
    #el  4.496705596346 ha de cambiar cada vez que mejore el sistema

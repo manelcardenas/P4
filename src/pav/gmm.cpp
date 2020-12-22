@@ -100,19 +100,22 @@ namespace upc {
     return log_prob_x;
   }
 
-  /// \TODO HECHO Compute the logprob for the whole input data.
+  /// \TODO Compute the logprob for the whole input data. 
+  /// \DONE
   float GMM::logprob(const fmatrix &data) const {    
 
-    if (nmix == 0 or vector_size == 0 or vector_size != data.ncol())
+    if (nmix == 0 or vector_size == 0 or vector_size != data.ncol()){
+      //cerr << nmix << vector_size << data.ncol() << "\n";
       return -1e38F;
-    
+    }
+    //cerr << nmix << vector_size << data.ncol() << "\n";
     float lprob = 0.0;
     unsigned int n;
 
     for (n=0; n<data.nrow(); ++n) {
-      /// \TODO  Compute the logprob of a single frame of the input data; you can use gmm_logprob() above.
-      /// \HECHO
-      lprob = lprob + gmm_logprob(data[n]);
+      /// \TODO To compute the logprob of a single frame of the input data, you can use gmm_logprob() above.
+      lprob += gmm_logprob(data[n]);
+      /// \DONE el producto de probs se convierte en suma al hacer el logaritmo, las almacenamos todas en lprob
     }    
     return lprob/n;
   }
@@ -211,18 +214,14 @@ namespace upc {
 	  //
       // Update old_prob, new_prob and inc_prob in order to stop the loop if logprob does not
       // increase more than inc_threshold.
-
-      new_prob=em_expectation(data,weights); //expectation
-      em_maximization(data,weights); //maximizacion
-      inc_prob=new_prob-old_prob; //recalculamos incremento
-      old_prob=new_prob; //Actualizamos valor para cada iteración
-
+      new_prob=em_expectation(data,weights);
+      em_maximization(data,weights);
+      inc_prob=new_prob-old_prob;
+      old_prob=new_prob;
       if(inc_prob <= inc_threshold){
-        cout << "GMM nmix=" << nmix << "\tite=" << iteration << "\tlog(prob)=" << new_prob << "\tinc=" << inc_prob << endl;
-        return 0; 
-      }           //cuando convergemos return 0 y tambien imprimos la iteración
-      /// \HECHO
-
+        cout << "GMM nmix = " << nmix << "\tite = " << iteration << "\tlog(prob) = " << new_prob << "\tinc = " << inc_prob << endl;
+      }
+      /// \DONE
       if (verbose & 01)
 	cout << "GMM nmix=" << nmix << "\tite=" << iteration << "\tlog(prob)=" << new_prob << "\tinc=" << inc_prob << endl;
     }
